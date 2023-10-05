@@ -22,6 +22,7 @@ function App() {
           setValue(e.target.value);
         }}
       ></input>
+
       <div style={{ display: "flex" }}>
         <A message={value} posts={posts} />
         <B message={value} posts={posts} />

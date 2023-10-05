@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useCallback } from "react";
 
-const Massage = ({ message }) => {
+const Massage = React.memo(({ message }) => {
   return <p>{message}</p>;
-};
+});
 
-const ListItem = ({ post }) => {
+const ListItem = React.memo(({ post }) => {
   return (
     <li key={post.id}>
       <p>{post.title}</p>
     </li>
   );
-};
+});
 
-const List = ({ posts }) => {
+const List = React.memo(({ posts, testfuction }) => {
+  console.log("LIST component is rendering ");
   return (
     <ul>
       {posts.map((post) => (
@@ -20,14 +21,16 @@ const List = ({ posts }) => {
       ))}
     </ul>
   );
-};
+});
 
 const B = ({ message, posts }) => {
+  console.log("b component is rendering");
+  const testfuction = useCallback(() => {}, []);
   return (
     <div>
       <h1>B COMPONENT</h1>
       <Massage message={message} />
-      <List posts={posts} />
+      <List posts={posts} testfuction={testfuction} />
     </div>
   );
 };
